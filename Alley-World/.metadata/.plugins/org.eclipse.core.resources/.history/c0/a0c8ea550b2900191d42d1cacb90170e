@@ -1,0 +1,22 @@
+package com.app.allyworld.postservice.servicetesting;
+
+import static org.junit.Assert.assertEquals;
+
+import org.apache.http.HttpStatus;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.allyworld.postservice.entity.Post;
+import com.app.allyworld.postservice.service.PostServiceImpl;
+
+public class PostServiceTesting {
+
+	@Autowired
+	private Post post;
+	@Test
+	public void testGetAllPosts()
+	{
+		PostServiceImpl service = new PostServiceImpl();
+		assertEquals(null, service.addNewPost(post));
+	}
+}

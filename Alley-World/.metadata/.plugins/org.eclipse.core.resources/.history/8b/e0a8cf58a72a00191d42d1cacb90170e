@@ -1,0 +1,78 @@
+package com.app.allyworld.postservice.resourcetesting;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.app.allyworld.postservice.entity.Comments;
+import com.app.allyworld.postservice.entity.Likes;
+import com.app.allyworld.postservice.entity.Post;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+public class PostTesting {
+
+	private Post post;
+	private Post post2;
+	private Post post3;
+	private Likes likes;
+	private Comments comment;
+
+	@Before
+	public void setUp() {
+		post = new Post(1, "feeling monday!", "http://github.com", LocalDateTime.now(),  new Likes(500, null),  new Comments(null, "wow! looking thin", LocalDateTime.now(), 500));
+		post2 = new Post(8, "feeling monday!", "http://github.com", LocalDateTime.now(),  new Likes(500, null),  new Comments(null, "wow! looking thin", LocalDateTime.now(), 500));
+		post3 = new Post(9, "feeling monday!", "http://github.com", LocalDateTime.now(),  new Likes(500, null),  new Comments(null, "wow! looking thin", LocalDateTime.now(), 500));
+
+	}
+
+	@Autowired
+	private TestRestTemplate restTemplate;
+
+	@Test
+	public void testForAddNewPost() throws Exception {
+		ResponseEntity<Post> postDetails = restTemplate.postForEntity("/posts",post3, Post.class);
+		// System.out.println(post.getBody().toString());
+		assertThat(postDetails.getStatusCode()).isEqualByComparingTo(HttpStatus.CREATED);
+		assertThat(postDetails.getBody().getProfileId()).isEqualTo(9);
+	}
+
+	@Test
+	public void testForAllPosts() throws Exception {
+		ResponseEntity<List> post = restTemplate.getForEntity("/posts", List.class);
+		assertThat(post.getStatusCode()).isEqualTo(HttpStatus.OK);
+	}
+
+	@Test
+	public void testForPostByProfileById() {
+		ResponseEntity<List> post = restTemplate.getForEntity("/posts/10", List.class);
+		assertEquals(HttpStatus.OK,post.getStatusCode());
+	}
+	@Test
+	public void testForUpdatePost() {
+		restTemplate.put("/posts/103", post);
+		ResponseEntity<List> post = restTemplate.getForEntity("/posts/8", List.class);
+		assertThat(post.getStatusCode()).isEqualTo(HttpStatus.OK);
+		//		assertThat(post.get).isEqualTo(HttpStatus.OK);
+	}
+	
+	@Test
+	public void testFordeletePost()
+	{
+		 restTemplate.delete("/posts/110" ,Post.class );
+	}
+	
+}

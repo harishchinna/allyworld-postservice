@@ -1,0 +1,7 @@
+package com.app.allyworld.postservice.service;
+
+public interface PostService {
+
+	void addNewPost(post);
+
+}

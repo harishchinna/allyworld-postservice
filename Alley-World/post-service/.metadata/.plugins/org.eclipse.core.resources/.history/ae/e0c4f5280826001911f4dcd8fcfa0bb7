@@ -1,0 +1,8 @@
+package com.app.allyworld.postservice.entity;
+
+public class Post {
+
+	private int postId;
+	private String status;
+	
+}

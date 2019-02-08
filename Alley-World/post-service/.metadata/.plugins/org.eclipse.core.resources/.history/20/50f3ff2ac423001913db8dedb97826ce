@@ -1,0 +1,6 @@
+package com.app.allyworld.postservice.service;
+
+public class PostServiceImpl implements PostService{
+
+}
+O

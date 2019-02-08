@@ -1,0 +1,16 @@
+package com.app.allyworld.postservice.entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Post {
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private int postId;
+	private int profileId;
+	private String status;
+	private String url;
+	
+}

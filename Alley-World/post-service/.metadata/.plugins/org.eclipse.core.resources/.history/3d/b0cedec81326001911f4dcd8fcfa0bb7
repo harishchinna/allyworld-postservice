@@ -1,0 +1,18 @@
+package com.app.allyworld.postservice.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.allyworld.postservice.entity.Post;
+import com.app.allyworld.postservice.repository.PostRepository;
+
+public class PostServiceImpl implements PostService{
+	
+	@Autowired
+	private PostRepository repository;
+
+	@Override
+	public void addNewPost(Post post) {
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.app.allyworld.postservice.entity;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class Comments {
+
+	private int profileId;
+	private String comment;
+	private LocalDateTime commentTime;
+	private List<Integer> likes;
+}

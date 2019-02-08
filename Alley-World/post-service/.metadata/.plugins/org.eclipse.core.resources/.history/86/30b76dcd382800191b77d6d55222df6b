@@ -1,0 +1,5 @@
+package com.app.allyworld.postservice.entity;
+
+public class Likes {
+
+}

@@ -1,0 +1,18 @@
+package com.app.allyworld.postservice.servicetesting;
+
+import static org.junit.Assert.assertEquals;
+
+import org.apache.http.HttpStatus;
+import org.junit.Test;
+
+import com.app.allyworld.postservice.service.PostServiceImpl;
+
+public class PostServiceTesting {
+
+	@Test
+	public void testGetAllPosts()
+	{
+		PostServiceImpl service = new PostServiceImpl();
+		assert.assertEquals(HttpStatus.SC_CREATED,service.addNewPost(post));
+	}
+}

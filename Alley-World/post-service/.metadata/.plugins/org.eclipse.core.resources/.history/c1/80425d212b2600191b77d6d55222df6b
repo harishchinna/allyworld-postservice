@@ -1,0 +1,9 @@
+package com.app.allyworld.postservice.service;
+
+import com.app.allyworld.postservice.entity.Post;
+
+public interface PostService {
+
+	void addNewPost(Post post);
+
+}

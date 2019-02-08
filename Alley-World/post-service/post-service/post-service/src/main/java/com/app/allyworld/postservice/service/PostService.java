@@ -1,0 +1,28 @@
+package com.app.allyworld.postservice.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.app.allyworld.postservice.entity.Post;
+
+@Service
+public interface PostService {
+
+	ResponseEntity<String> addNewPost(Post post);
+
+	List<Post> getAllPosts();
+
+	List<Post> getPostByProfileId(int profileId);
+
+	void deletePostById(int postId);
+
+	void deletePost();
+
+	Post updatePost(Post post);
+
+	Optional<Post> getPostById(int postId);
+
+}

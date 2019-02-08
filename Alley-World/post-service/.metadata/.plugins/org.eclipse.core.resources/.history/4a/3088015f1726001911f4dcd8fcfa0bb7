@@ -1,0 +1,27 @@
+package com.app.allyworld.postservice.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.allyworld.postservice.entity.Post;
+import com.app.allyworld.postservice.repository.PostRepository;
+
+@Service
+public class PostServiceImpl implements PostService {
+
+	@Autowired
+	private PostRepository repository;
+
+	@Override
+	public void addNewPost(Post post) {
+		post.setProfileId(post.getProfileId());
+		post.setPostId(post.getPostId());
+		post.setUrl(post.getUrl());
+		post.setStatus(post.getStatus());
+		post.setDate(post.getDate());
+		post.setLikes(post.getLikes());
+		post.setComments(post.getComments());
+		repository.save(post);
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.app.allyworld.postservice.entity;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Likes {
+
+	private Integer likes;
+	private List<Integer> likesProfileId;
+
+	public Likes() {
+		super();
+	}
+
+	public Likes(Integer likes, List<Integer> profileId) {
+		super();
+		this.likes = likes;
+		this.profileId = profileId;
+	}
+
+	public Integer getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Integer likes) {
+		this.likes = likes;
+	}
+
+	public List<Integer> getProfileId() {
+		return profileId;
+	}
+
+	public void setProfileId(List<Integer> profileId) {
+		this.profileId = profileId;
+	}
+
+	@Override
+	public String toString() {
+		return "Likes [likes=" + likes + ", profileId=" + profileId + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+}

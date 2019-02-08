@@ -1,0 +1,12 @@
+package com.app.allyworld.postservice.service;
+
+import org.springframework.stereotype.Service;
+
+import com.app.allyworld.postservice.entity.Post;
+
+@Service
+public interface PostService {
+
+	void addNewPost(Post post);
+
+}

@@ -1,0 +1,33 @@
+package com.app.allyworld.postservice;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.apache.http.HttpStatus;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.app.allyworld.postservice.entity.Post;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class PostServiceApplicationTests {
+	
+	@Autowired
+	private TestRestTemplate restTemplate;
+
+	@Test
+	public void testForAddNewPost() {
+	
+		ResponseEntity<Post> response =  restTemplate.getForEntity("/posts/", Post.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SC_CREATED);
+		assertThat(response.getBody().getPostId()).isEqualTo("145");
+		assertThat(response.getBody().getProfileId()).isEqualTo("5");
+	}
+
+}
+

@@ -1,0 +1,3 @@
+server.port=7676
+
+spring.data.mongodb.database=postservice_db

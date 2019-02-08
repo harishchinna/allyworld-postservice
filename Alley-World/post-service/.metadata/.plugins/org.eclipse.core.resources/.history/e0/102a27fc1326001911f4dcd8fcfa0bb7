@@ -1,0 +1,9 @@
+package com.app.allyworld.postservice.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.app.allyworld.postservice.entity.Post;
+
+public interface PostRepository extends MongoRepository<Post, Integer>{
+
+}

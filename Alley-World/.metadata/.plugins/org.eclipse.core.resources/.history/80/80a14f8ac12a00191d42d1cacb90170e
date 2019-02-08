@@ -1,0 +1,70 @@
+package com.app.allyworld.postservice.service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.app.allyworld.postservice.entity.Post;
+import com.app.allyworld.postservice.repository.PostRepository;
+
+@Service
+public class PostServiceImpl implements PostService {
+
+	@Autowired
+	private PostRepository repository;
+
+	@Override
+	public ResponseEntity<String> addNewPost(Post post) {
+//		post.setDate(LocalDateTime.now());
+//		post.getComments().setCommentTime(LocalDateTime.now());
+		repository.save(post);
+		return new ResponseEntity<String>(HttpStatus.OK);
+	}
+
+	@Override
+	public List<Post> getAllPosts() {
+		return repository.findAll();
+	}
+
+	@Override
+	public List<Post> getPostByProfileId(int profileId) {
+		System.out.println(profileId);
+		List<Post> profilePost = repository.findPostByProfileId(profileId);
+		System.out.println(profilePost);
+		return profilePost;
+	}
+
+	@Override
+	public void deletePostById(int postId) {
+		repository.deleteById(postId);
+	}
+
+	@Override
+	public void deletePost() {
+		repository.deleteAll();
+	}
+
+	public Post updatePost(Post post) {
+		post.setStatus(post.getStatus());
+		post.setUrl(post.getUrl());
+		post.getLikes().setLikes(post.getLikes().getLikes());
+		post.getLikes().setLikesProfileId(post.getLikes().getLikesProfileId());
+		post.getComments().setCommentProfileId(post.getComments().getCommentProfileId());
+		post.getComments().setComment(post.getComments().getComment());
+		post.setDate(LocalDateTime.now());
+		post.getComments().setCommentTime(LocalDateTime.now());
+		System.out.println("updating");
+		return repository.save(post);
+	}
+
+	@Override
+	public Optional<Post> getPostById(int postId) {
+		return repository.findById(postId);
+	}
+
+}

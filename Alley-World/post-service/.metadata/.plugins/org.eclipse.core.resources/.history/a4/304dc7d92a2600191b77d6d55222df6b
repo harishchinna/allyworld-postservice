@@ -1,0 +1,63 @@
+package com.app.allyworld.postservice.entity;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class Comments {
+
+	private int profileId;
+	private String comment;
+	private LocalDateTime commentTime;
+	private List<Integer> likes;
+
+	public Comments() {
+		super();
+	}
+
+	public Comments(int profileId, String comment, LocalDateTime commentTime, List<Integer> likes) {
+		super();
+		this.profileId = profileId;
+		this.comment = comment;
+		this.commentTime = commentTime;
+		this.likes = likes;
+	}
+
+	public int getProfileId() {
+		return profileId;
+	}
+
+	public void setProfileId(int profileId) {
+		this.profileId = profileId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public LocalDateTime getCommentTime() {
+		return commentTime;
+	}
+
+	public void setCommentTime(LocalDateTime commentTime) {
+		this.commentTime = commentTime;
+	}
+
+	public List<Integer> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<Integer> likes) {
+		this.likes = likes;
+	}
+
+	@Override
+	public String toString() {
+		return "Comments [profileId=" + profileId + ", comment=" + comment + ", commentTime=" + commentTime + ", likes="
+				+ likes + "]";
+	}
+
+}

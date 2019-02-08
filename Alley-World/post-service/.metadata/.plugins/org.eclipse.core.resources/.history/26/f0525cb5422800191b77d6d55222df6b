@@ -1,0 +1,66 @@
+package com.app.allyworld.postservice.entity;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Comments {
+
+	private List<Integer> CommentProfileId;
+	private String comment;
+	private LocalDateTime commentTime;
+	private Integer likes;
+
+	public Comments() {
+		super();
+	}
+
+	public Comments(List<Integer> CommentProfileId, String comment, LocalDateTime commentTime, Integer likes) {
+		super();
+		this.CommentProfileId = CommentProfileId;
+		this.comment = comment;
+		this.commentTime = commentTime;
+		this.likes = likes;
+	}
+
+	public List<Integer> getCommentProfileId() {
+		return CommentProfileId;
+	}
+
+	public void setCommentProfileId(List<Integer> CommentProfileId) {
+		this.CommentProfileId = CommentProfileId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public LocalDateTime getCommentTime() {
+		return commentTime;
+	}
+
+	public void setCommentTime(LocalDateTime commentTime) {
+		this.commentTime = commentTime;
+	}
+
+	public Integer getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Integer likes) {
+		this.likes = likes;
+	}
+
+	@Override
+	public String toString() {
+		return "Comments [CommentProfileId=" + CommentProfileId + ", comment=" + comment + ", commentTime=" + commentTime + ", likes="
+				+ likes + "]";
+	}
+
+}
